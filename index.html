@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Ifra Malik ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      min-height:100vh;
+      background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:'Poppins',sans-serif;
+      color:#fff;
+      overflow:hidden
+    }
+
+    .card{
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(12px);
+      border-radius:25px;
+      padding:40px 35px;
+      max-width:420px;
+      text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,.4);
+      animation:fadeIn 2s ease
+    }
+
+    h1{
+      font-family:'Great Vibes',cursive;
+      font-size:3rem;
+      margin-bottom:10px;
+      color:#ffb6c1
+    }
+
+    h2{
+      font-size:1.1rem;
+      font-weight:400;
+      margin-bottom:20px;
+      opacity:.9
+    }
+
+    p{
+      font-size:.95rem;
+      line-height:1.8;
+      margin-bottom:18px;
+      color:#f1f1f1
+    }
+
+    .heart{
+      font-size:2.5rem;
+      animation:heartbeat 1.5s infinite;
+      color:#ff4d6d;
+      margin-bottom:10px
+    }
+
+    button{
+      margin-top:15px;
+      padding:12px 30px;
+      border:none;
+      border-radius:30px;
+      background:linear-gradient(135deg,#ff4d6d,#ff758f);
+      color:#fff;
+      font-size:.95rem;
+      cursor:pointer;
+      transition:.3s
+    }
+
+    button:hover{
+      transform:translateY(-3px) scale(1.05);
+      box-shadow:0 10px 25px rgba(255,77,109,.5)
+    }
+    /* 🌹 ROSE INTRO SCREEN */
+#roseScreen{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#300018,#000);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  cursor:pointer;
+}
+
+.rose{
+  font-size:90px;
+  transition:transform .5s;
+}
+
+.rose-text{
+  font-size:14px;
+  opacity:.8;
+}
+
+/* 🌸 PETALS */
+.petal{
+  position:fixed;
+  font-size:18px;
+  animation:petalFall 2s ease-out forwards;
+}
+
+@keyframes petalFall{
+  to{
+    transform:translateY(120vh) rotate(120deg);
+    opacity:0;
+  }
+}
+
+/* 💥 HEART BURST */
+.heart-burst{
+  position:fixed;
+  font-size:26px;
+  animation:burst 1.2s ease-out forwards;
+}
+
+@keyframes burst{
+  to{
+    transform:translate(var(--x),var(--y)) scale(0);
+    opacity:0;
+  }
+}
+
+/* 🃏 CARD SLIDE IN */
+.card{
+  transform:translateY(60px);
+  opacity:0;
+}
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+  transition:1.5s ease;
+}
+
+
+    .hidden-msg{
+      display:none;
+      margin-top:15px;
+      font-size:.95rem;
+      color:#ffdce3;
+      animation:fadeIn 1s ease
+    }
+
+    /* Animations */
+    @keyframes heartbeat{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Particles */
+    .particle{
+      position:fixed;
+      pointer-events:none;
+      font-size:16px;
+      animation:floatUp 1.5s ease-out forwards
+    }
+
+    @keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-40px) scale(1.6)}}
+
+    /* Moving stars */
+    .star{
+      position:fixed;
+      width:2px;
+      height:2px;
+      background:#fff;
+      border-radius:50%;
+      opacity:.8;
+      animation:moveStar linear infinite
+    }
+
+    @keyframes moveStar{from{transform:translateY(-10px)}to{transform:translateY(110vh)}}
+
+    /* Mobile */
+    @media(max-width:768px){
+      h1{font-size:2.2rem;}
+      h2{font-size:.95rem;}
+      p{font-size:.85rem;line-height:1.5;}
+      button{font-size:.85rem;}
+      .heart{font-size:2rem;}
+      .rose{font-size:15vw;}
+      .rose-text{font-size:5vw;}
+    }
+
+    @media(max-width:480px){
+      h1{font-size:1.8rem;}
+      h2{font-size:.85rem;}
+      p{font-size:.8rem;line-height:1.4;}
+      button{padding:.6rem 1.5rem;font-size:.8rem;}
+      .heart{font-size:1.8rem;}
+      .rose{font-size:20vw;}
+      .rose-text{font-size:6vw;}
+    }
+  
+    /* Night / Sunset toggle */
+    body.sunset{background:linear-gradient(135deg,#ff512f,#f09819)}
+    .toggle{position:absolute;top:20px;right:20px;cursor:pointer;font-size:1.4rem}
+
+    /* Floating name */
+    .float-name{position:absolute;top:-50px;font-family:'Great Vibes',cursive;font-size:1.8rem;color:#ffdce3;opacity:.8;animation:floatDown 12s linear infinite}
+    @keyframes floatDown{from{transform:translateY(-60px)}to{transform:translateY(110vh)}}
+
+    /* Love letter */
+    .letter{max-height:0;overflow:hidden;transition:max-height 40s ease}
+    .letter.show{max-height:400px}
+
+    /* Heart rain */
+    .rain-heart{position:fixed;top:-20px;font-size:20px;animation:rain 3s linear forwards}
+    @keyframes rain{to{transform:translateY(110vh);opacity:0}}
+    
+  </style>
+</head>
+<body>
+  <!-- 🌹 ROSE INTRO -->
+<div id="roseScreen" onclick="breakRose()">
+  <div class="rose">🌹</div>
+  <div class="rose-text">Tap the rose</div>
+</div>
+
+  <div class="toggle" onclick="toggleMode()">🌙</div>
+
+  <div class="card">
+    <h1>Ifra Malik</h1>
+    <h2>This website exists only for you 🌙</h2>
+
+    <p>
+      "Ifra, tum sirf meri pasand nahi, meri zindagi ka sabse khoobsurat hissa ho. Mere paas koi bada tohfa toh nahi, magar ye dil hai jo sirf tumhare liye dhadakta hai. Tumhare sath bita har pal mere liye kisi tohfe se kam nahi."
+    </p>
+
+    <div class="heart">❤️</div>
+
+    <div class="letter" id="letter">
+      <p>
+        Ifra,
+        yeh letter dheere dheere khulta hai,
+        bilkul us mohabbat ki tarah
+        jo roz tumhare liye barhti ja rahi hai.
+        Tum sirf meri pasand nahi,
+        meri aadat, meri dua
+        aur mere har kal ka khwab ho.
+      </p>
+    </div>
+
+    <!-- Spotify Embed -->
+    <p style="font-size:.85rem;opacity:.9">🎶 Ifra, yeh gaana tumhari yaad dilata hai</p>
+    <iframe
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/2ZzZ2qwZBWlDKs420hhloc"
+      width="100%"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+    <button onclick="showMessage()">Tap to see how much I care</button>
+
+    <div class="hidden-msg" id="msg">
+      Main bohot mohabbat karta hoon tumse Ifra.
+      Tum meri dua, meri muskurahat
+      aur mere dil ka sukoon ho 💖
+    </div>
+
+    <div class="hidden-msg" id="secret">
+      Yeh raaz sirf tumhare liye hai 💌<br>
+      Agar duniya bhi khafa ho jaye,<br>
+      main hamesha tumhare sath khara rahunga.
+    </div>
+  </div>
+
+  <script>
+    function showMessage(){
+      document.getElementById('msg').style.display='block';
+      document.getElementById('letter').classList.add('show');
+      heartRain();
+    }
+
+    function toggleMode(){document.body.classList.toggle('sunset')}
+
+    function heartRain(){
+      for(let i=0;i<30;i++){
+        const h=document.createElement('div');
+        h.className='rain-heart';
+        h.innerHTML='❤️';
+        h.style.left=Math.random()*100+'vw';
+        h.style.animationDelay=Math.random()+'s';
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),3000)
+      }
+    }
+    /* ✨ Floating "I ❤️ U" letters like Ifra names */
+function floatingLove(){
+  const phrases = ["I ❤️ U", "I ❤️ U", "I ❤️ U", "I ❤️ U", "I ❤️ U"];
+  for(let i=0;i<15;i++){ // 15 phrases at a time
+    const n=document.createElement('div');
+    n.className='float-name';
+    n.innerText = phrases[Math.floor(Math.random()*phrases.length)];
+    n.style.left = Math.random()*100+'vw';
+    n.style.top = '-50px';
+    n.style.fontSize = (16 + Math.random()*20) + 'px'; // random size
+    n.style.color = '#ff4d6d';
+    n.style.opacity = 0.8;
+    n.style.animationDelay = Math.random()*10+'s';
+    document.body.appendChild(n);
+  }
+}
+
+// Call it together with floatingNames
+floatingNames();
+floatingLove();
+
+    function floatingNames(){
+      for(let i=0;i<8;i++){
+        const n=document.createElement('div');
+        n.className='float-name';
+        n.innerText='Ifra';
+        n.style.left=Math.random()*100+'vw';
+        n.style.animationDelay=Math.random()*10+'s';
+        document.body.appendChild(n)
+      }
+    }
+
+    floatingNames();{
+      document.getElementById('msg').style.display='block'
+    }
+
+    document.addEventListener('mousemove',e=>{
+      const p=document.createElement('div')
+      p.className='particle'
+      p.innerHTML=Math.random()>.5?'❤️':'✨'
+      p.style.left=e.clientX+'px'
+      p.style.top=e.clientY+'px'
+      document.body.appendChild(p)
+      setTimeout(()=>p.remove(),1500)
+    })
+
+    document.addEventListener('dblclick',()=>{
+      document.getElementById('secret').style.display='block'
+    })
+
+    for(let i=0;i<60;i++){
+      const s=document.createElement('div')
+      s.className='star'
+      s.style.left=Math.random()*100+'vw'
+      s.style.animationDuration=5+Math.random()*10+'s'
+      s.style.opacity=Math.random()
+      document.body.appendChild(s)
+    }
+    /* 🌹 ROSE FLOW */
+function breakRose(){
+  petalFall();
+  heartBurst();
+
+  setTimeout(()=>heartRain(),600);
+
+  setTimeout(()=>{
+    document.getElementById('roseScreen').style.opacity=0;
+  },1600);
+
+  setTimeout(()=>{
+    document.getElementById('roseScreen').remove();
+    document.querySelector('.card').classList.add('show');
+    heartRain();
+  },2400);
+}
+
+/* 🌸 PETALS */
+function petalFall(){
+  for(let i=0;i<14;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.innerHTML='🌸';
+    p.style.left=Math.random()*100+'vw';
+    p.style.top='40vh';
+    p.style.animationDelay=Math.random()*.5+'s';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),2000);
+  }
+}
+
+/* 💥 HEART BURST */
+function heartBurst(){
+  for(let i=0;i<28;i++){
+    const h=document.createElement('div');
+    h.className='heart-burst';
+    h.innerHTML='❤️';
+    h.style.left='50vw';
+    h.style.top='50vh';
+    h.style.setProperty('--x',(Math.random()*400-200)+'px');
+    h.style.setProperty('--y',(Math.random()*400-200)+'px');
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1200);
+  }
+}
+  </script>
+
+</body>
+</html>
