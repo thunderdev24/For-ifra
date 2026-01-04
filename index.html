@@ -76,41 +76,81 @@
       box-shadow:0 10px 25px rgba(255,77,109,.5)
     }
     /* 🌹 ROSE INTRO SCREEN */
-#roseScreen{
+    #roseScreen{
   position:fixed;
   inset:0;
-  background:radial-gradient(circle,#300018,#000);
+  background:radial-gradient(circle,#2b0014,#000);
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   z-index:9999;
-  cursor:pointer;
 }
 
-.rose{
-  font-size:90px;
-  transition:transform .5s;
+/* 🌹 ROSE BODY */
+/* 🌸 IMAGE STYLE FLOWER */
+/* 🌸 IMAGE STYLE ROSE */
+.flower{
+  position:relative;
+  width:170px;
+  height:170px;
 }
 
-.rose-text{
-  font-size:14px;
-  opacity:.8;
-}
-
-/* 🌸 PETALS */
+/* 🌺 PETALS */
 .petal{
-  position:fixed;
-  font-size:18px;
-  animation:petalFall 2s ease-out forwards;
+  position:absolute;
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#ffc1d6,#d9416e);
 }
 
-@keyframes petalFall{
+/* 🌪️ SPIRAL PLACEMENT (IMAGE MATCH) */
+.p1{top:5px; left:38px; z-index:7}
+.p2{top:22px; left:68px; z-index:6}
+.p3{top:55px; left:72px; z-index:5}
+.p4{top:78px; left:42px; z-index:4}
+.p5{top:62px; left:10px; z-index:3}
+.p6{top:30px; left:8px; z-index:2}
+.p7{top:32px; left:38px; z-index:1}
+
+/* 🌸 FALL + FADE */
+.petal.fall{
+  animation:fall 2.8s ease forwards;
+}
+
+@keyframes fall{
   to{
-    transform:translateY(120vh) rotate(120deg);
+    transform:translateY(120vh);
     opacity:0;
   }
 }
+
+
+/* 🌸 FALL ANIMATION */
+.petal.fall{
+  animation:fall 2.8s ease forwards;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(0);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(120vh);
+    opacity:0;
+  }
+}
+
+
+.rose-text{
+  margin-top:18px;
+  font-size:14px;
+  opacity:.8;
+  color:#ffdce3;
+}
+
 
 /* 💥 HEART BURST */
 .heart-burst{
@@ -136,6 +176,7 @@
   opacity:1;
   transition:1.5s ease;
 }
+/* 🌹 NEW ROSE STRUCTURE */
 
 
     .hidden-msg{
@@ -214,16 +255,32 @@
 </head>
 <body>
   <!-- 🌹 ROSE INTRO -->
-<div id="roseScreen" onclick="breakRose()">
-  <div class="rose">🌹</div>
-  <div class="rose-text">Tap the rose</div>
-</div>
+  <div id="roseScreen" onclick="dropPetals()">
+    <div class="flower">
+      <span class="petal p1"></span>
+      <span class="petal p2"></span>
+      <span class="petal p3"></span>
+      <span class="petal p4"></span>
+      <span class="petal p5"></span>
+      <span class="petal p6"></span>
+      <span class="petal p7"></span>
+    </div>
+    
+    <!-- <div class="rose-text">Tap the rose 🌹</div> -->
+  </div>
+  
+  
+  
 
   <div class="toggle" onclick="toggleMode()">🌙</div>
 
   <div class="card">
     <h1>Ifra Malik</h1>
-    <h2>This website exists only for you 🌙</h2>
+    <h2>
+      This website exists only for you
+      <span onclick="toggleMode()" style="cursor:pointer">🌙</span>
+    </h2>
+    
 
     <p>
       "Ifra, tum sirf meri pasand nahi, meri zindagi ka sabse khoobsurat hissa ho. Mere paas koi bada tohfa toh nahi, magar ye dil hai jo sirf tumhare liye dhadakta hai. Tumhare sath bita har pal mere liye kisi tohfe se kam nahi."
@@ -348,22 +405,28 @@ floatingLove();
       document.body.appendChild(s)
     }
     /* 🌹 ROSE FLOW */
-function breakRose(){
-  petalFall();
-  heartBurst();
+    function dropPetals(){
+  const petals=document.querySelectorAll('.petal');
 
-  setTimeout(()=>heartRain(),600);
+  petals.forEach((petal,i)=>{
+    setTimeout(()=>{
+      petal.classList.add('fall');
+    },i*300);
+  });
 
   setTimeout(()=>{
     document.getElementById('roseScreen').style.opacity=0;
-  },1600);
+  },2600);
 
   setTimeout(()=>{
     document.getElementById('roseScreen').remove();
     document.querySelector('.card').classList.add('show');
-    heartRain();
-  },2400);
+  },3200);
 }
+
+
+
+
 
 /* 🌸 PETALS */
 function petalFall(){
