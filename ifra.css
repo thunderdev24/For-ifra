@@ -266,6 +266,10 @@ color:#ff4d6d;
 text-shadow:0 0 20px #ff4d6d,0 0 40px #ff99aa;
 animation:pulse 2s infinite;
 }
+#finale.hide{
+  opacity:0;
+  transform:scale(0.95);
+}
 
 @keyframes pulse{
 50%{transform:scale(1.1)}
@@ -382,4 +386,11 @@ transform:scale(1);
 
 @media(max-width:768px){
 #poetryLine{font-size:2.2rem;}
+}
+#countdown span{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:.4}
 }

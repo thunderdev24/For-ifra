@@ -77,8 +77,8 @@ floatingLove();
   }
   /* 🌹 ROSE FLOW */
   function dropPetals(){
-  const petals=document.querySelectorAll('.petal');
   playMusic();
+  const petals=document.querySelectorAll('.petal');
   petals.forEach((petal,i)=>{
   setTimeout(()=>{
     petal.classList.add('fall');
@@ -129,13 +129,14 @@ return (
 function startBirthdayDay(){
 if(birthdayMode) return;
 birthdayMode = true;
+hideFinale();
 document.body.classList.add("cinematicZoom");
 document.body.classList.add("cinematic");
 document.getElementById("birthdayScene")?.classList.add("show");
+fireworks();
 setTimeout(()=>{
 startPoetry();
 },10000); // 🎂 20 sec baad poetry start
-fireworks();
 
 document.getElementById("countdown").innerHTML =
   "🎉 HAPPY BIRTHDAY IFRA 🎂💖";
@@ -168,9 +169,11 @@ if(birthdayMode){
 const d = Math.floor(diff / 86400000);
 const h = Math.floor(diff / 3600000) % 24;
 const m = Math.floor(diff / 60000) % 60;
+const s = Math.floor(diff / 1000) % 60;
+
 
 countdownEl.innerHTML =
-  `🎂 ${d} days ${h} hrs ${m} mins left`;
+  `🎂 ${d} days ${h} hrs ${m} mins <span>${s}</span> secs left`;
 },1000);
 
 
@@ -193,11 +196,26 @@ for(let i=0;i<28;i++){
   setTimeout(()=>h.remove(),1200);
 }
 }
-function playMusic(){
-const music=document.getElementById('bgMusic');
-music.volume=0.5;
-music.play();
+const music = document.getElementById("bgMusic");
+
+function unlockAudio(){
+  music.play().then(()=>{
+    music.pause();
+    music.currentTime = 0;
+    music.muted = false;
+  }).catch(()=>{});
 }
+
+// page load pe unlock
+document.addEventListener("DOMContentLoaded", unlockAudio);
+
+function playMusic(){
+  music.muted = false;
+  music.volume = 0.6;
+  music.play().catch(()=>{});
+}
+
+
 function fireworks(){
 for(let i=0;i<40;i++){
   const f=document.createElement('div');
@@ -213,9 +231,31 @@ for(let i=0;i<40;i++){
 }
 
 function showFinale(){
-document.getElementById('finale').classList.add('show');
-fireworks();
+
+  // 🎂 Agar birthday chal rahi hai → finale mat dikhao
+  if(birthdayMode){
+    hideFinale();
+    startBirthdayDay(); // ensure birthday screen ON
+    return;
+  }
+
+  const finale = document.getElementById('finale');
+  finale.classList.add('show');
+  finale.style.pointerEvents = "auto";
+  fireworks();
 }
+function hideFinale(){
+  const finale = document.getElementById('finale');
+  finale.classList.remove('show');
+  finale.classList.add('hide');
+
+  setTimeout(()=>{
+    finale.classList.remove('hide');
+    finale.style.pointerEvents = "none";
+  },800);
+}
+
+
 
 function playBirthdayMusic(){
 const music = document.getElementById("bgMusic");
@@ -243,7 +283,7 @@ const poetryLines = [
 "Ifra… 🌙",
 "Tum sirf meri pasand nahi ho",
 "tum meri aadat ho",
-"Tumhari khamoshi bhi",
+"Tumhari mojoodgi bhi",
 "mere dil ko sukoon deti hai",
 "Tumhare bina har din adhoora sa lagta hai",
 "Tumhari muskurahat",
@@ -253,11 +293,14 @@ const poetryLines = [
 "Tum meri dua bhi ho",
 "aur meri har subah ka sabab bhi",
 "Me tumhara hona chahta hu",
-"Tumse mohabbat",
-"meri sabse khoobsurat kamzori hai",
+"Tumse",
+"Bohot mohobbat krta hu me",
 "Aaj tumhara din hai 🎂",
 "lekin mera har din",
 "sirf tumhara hai ❤️",
+"Hamesha khush raho",
+"Allah hifazat krre tumhari",
+"Hamari duaye tmhare sath hain hamesha",
 "Happy Birthday, Ifra 💖"
 ];
 
@@ -326,11 +369,4 @@ clearInterval(poetryTimer);
 poetryTimer = setInterval(()=>{
   showPoetryLine();
 },4500);
-}
-
-function playWhisper(){
-const w = document.getElementById("whisper");
-w.volume = 0.25;
-w.playbackRate = 0.9;
-w.play();
 }

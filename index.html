@@ -6,6 +6,7 @@
   <title>For Ifra Malik ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="ifra.css">
+
 </head>
 <body>
   <!-- 🌹 ROSE INTRO -->
@@ -34,13 +35,20 @@
       This website exists only for you
       <span onclick="toggleMode()" style="cursor:pointer">🌙</span>
     </h2>
-    <audio id="bgMusic" loop>
-      <source src="Bayaan.mp4" type="audio/mpeg">
-    </audio>
+    <audio
+    id="bgMusic"
+    loop
+    preload="auto"
+    playsinline
+    muted
+  >
+    <source src="Bayaan_1.mp4" type="audio/mp4">
+  </audio>
+  
     
 
     <p>
-      "Ifra, tum sirf meri pasand nahi, meri zindagi ka sabse khoobsurat hissa ho. Mere paas koi bada tohfa toh nahi, magar ye dil hai jo sirf tumhare liye dhadakta hai. Tumhare sath bita har pal mere liye kisi tohfe se kam nahi."
+      "Ifra, tum sirf meri pasand nahi, meri zindagi ka sabse khoobsurat hissa ho. Mere paas koi bada tohfa toh nahi, magar ye dil hai jo sirf tumhare liye dhadakta hai. Tumhare sath guzra har lamha mere liye kisi tohfe se kam nahi."
     </p>
 
     <div class="heart">❤️</div>
@@ -91,16 +99,18 @@
     <h1>Happy Birthday<br>Ifra 🎂❤️</h1>
   </div>
   
-<div id="finale">
-  <h1>I LOVE YOU ❤️</h1>
-</div>
+  <div id="finale" onclick="hideFinale()" ontouchstart="hideFinale()">
+    <h1>I LOVE YOU ❤️</h1>
+  </div>
+  
 <!-- 💌 POETRY OVERLAY -->
 <div id="poetryOverlay">
   <div id="poetryLine"></div>
-  <div class="tapHint">Tap anywhere ❤️</div>
+  <!-- <div class="tapHint">Tap anywhere ❤️</div> -->
 </div>
-<audio id="whisper" src="whisper.mp3" preload="auto"></audio>
 
 <script src="ifra.js"></script>
+
+</script>
 </body>
 </html>
