@@ -96,10 +96,28 @@ setTimeout(()=>{
 }
 
 
+const music = document.getElementById("bgMusic");
+
+function unlockAudio(){
+  music.play().then(()=>{
+    music.pause();
+    music.currentTime = 0;
+    music.muted = false;
+  }).catch(()=>{});
+}
+
+// page load pe unlock
+document.addEventListener("DOMContentLoaded", unlockAudio);
+
+function playMusic(){
+  music.muted = false;
+  music.volume = 0.6;
+  music.play().catch(()=>{});
+}
 
 const BIRTHDAY = {
-day: 4,   // 4 Jan
-month: 0  // January
+  day: 4,   // 4 Jan
+  month: 0  // January
 };
 
 let birthdayMode = false;
@@ -196,24 +214,6 @@ for(let i=0;i<28;i++){
   setTimeout(()=>h.remove(),1200);
 }
 }
-const music = document.getElementById("bgMusic");
-
-function unlockAudio(){
-  music.play().then(()=>{
-    music.pause();
-    music.currentTime = 0;
-    music.muted = false;
-  }).catch(()=>{});
-}
-
-// page load pe unlock
-document.addEventListener("DOMContentLoaded", unlockAudio);
-
-function playMusic(){
-  music.muted = false;
-  music.volume = 0.6;
-  music.play().catch(()=>{});
-}
 
 
 function fireworks(){
@@ -257,21 +257,8 @@ function hideFinale(){
 
 
 
-function playBirthdayMusic(){
-const music = document.getElementById("bgMusic");
-if(!music) return;
 
-music.volume = 0.6;
-music.play();
-}
 
-function stopBirthdayMusic(){
-const music = document.getElementById("bgMusic");
-if(!music) return;
-
-music.pause();
-music.currentTime = 0;
-}
 /* 💌 BIRTHDAY POETRY FOR IFRA */
 let poetryIndex = 0;
 let charIndex = 0;
